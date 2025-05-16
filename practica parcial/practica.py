@@ -12,6 +12,11 @@ def verificar_tesoro(mapa: list, x: int, y: int) -> int:
 
     distancia = x - x_tesoro + y - y_tesoro
 
+
+    # Convertir la distancia en un numero positivo
+    if distancia < 0:
+        distancia *= (-1)
+
     return distancia
 
 opcion = "s"
@@ -30,7 +35,9 @@ while opcion == "s":
 
     if resultado == 0:
         print("¡Encontraste el tesoro!")
+        opcion = "n"
     else:
+        
         print(f"Fallaste. El tesoro está a {resultado} casilleros de distancia.")
         opcion = input("Queres seguir intentando? (s/n): ")
 
