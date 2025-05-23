@@ -32,16 +32,3 @@ while seguir == "s":
 
     seguir = input("¿Quieres seguir jugando? (s/n): ")
 
-
-contador == 0
-    
-
-
-
-
-
-            
-
-
-
-
