@@ -1,4 +1,4 @@
-tablero = [[0,0,1,0,0],
+""" tablero = [[0,0,1,0,0],
            [0,1,0,1,0],
            [1,0,0,1,0],
            [0,0,1,0,1],
@@ -32,3 +32,20 @@ while seguir == "s":
 
     seguir = input("¿Quieres seguir jugando? (s/n): ")
 
+ """
+import random
+lista = [2,5,6,2,4]
+
+for i in range(2):
+
+    
+
+    random.shuffle(lista)
+
+
+
+    numero = lista.pop()
+
+    print(lista)
+
+    print(numero)
