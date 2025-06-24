@@ -9,36 +9,37 @@ posicion_ganador = len(tablero) - 1
 posicion_perdedor = 0 """
 
 
-def main(preguntas, posicion, tablero):
+def main(preguntas:list, posicion:int, tablero:list):
 
-
+    # Pide nombre y señal para empezar, tambien hace la copia de la lista de preguntas
     nombre_jugador = pedir_nombre()
-
     preguntas_copia = mezclar_nueva_lista(preguntas)
-
     señal = ingresar_opcion("Quiere iniciar el juego? (s/n): ")
 
+    #Inicia el bucle segun la señal del jugador
     while señal == "s":
 
+        #Cuando la lista de preguntas termina, finaliza el juego
         if not preguntas_copia:
             print("Se acabaron las preguntas.")
             print(f"Tu puntaje final es: {posicion}")
             break
-
+        
+        #Elegimos la pregunta
         pregunta_elegida = sacar_pregunta(preguntas_copia)
 
-
+        #Imprimimos las pregunta y opciones
         mostrar_pregunta(pregunta_elegida)
 
-
+        # Pide y valida la respuesta del jugador
         respuesta = input("Ingrese su respuesta (a - b - c): ").lower()
         respuesta = validar_respuesta(respuesta)
 
 
-
+        #Posicion final del jugador ya calculado
         posicion = mover(pregunta_elegida, respuesta, posicion, tablero)
 
-
+        #Corta el bucle si el jugador gana o pierde
         estado = verificar_estado_juego(posicion, posicion_ganador)
         if estado != "continua":
             break
