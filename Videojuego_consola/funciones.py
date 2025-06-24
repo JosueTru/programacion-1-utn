@@ -9,13 +9,15 @@ def pedir_nombre():
 
 # Valida las opciones para seguir o no
 def validar_opcion(opcion:str)->str:
+
+    #Inicia el bucle while para que solo acepte s / n
     while opcion != "s" and opcion != "n":
         opcion = input("Error, Ingrese una opcion valida (s/n): ").lower()
 
     return opcion
 ###
 
-def ingresar_opcion(texto:str):
+def ingresar_opcion(texto:str)->str:
     opcion = input(texto).lower()
     opcion_validada = validar_opcion(opcion)
 
@@ -23,14 +25,14 @@ def ingresar_opcion(texto:str):
 
 
 ###
-def mezclar_nueva_lista(preguntas:list):
+def mezclar_nueva_lista(preguntas:list)->list:
     preguntas_copia = preguntas.copy()
     random.shuffle(preguntas_copia)
     return preguntas_copia
 
 
 
-def sacar_pregunta(preguntas:list):
+def sacar_pregunta(preguntas:list)->dict:
     pregunta_elegida = preguntas.pop()
 
     return pregunta_elegida
@@ -45,7 +47,7 @@ def mostrar_pregunta(diccionario:dict):
 
 
 # Valida las respuestas
-def validar_respuesta(respuesta):
+def validar_respuesta(respuesta:str)->str:
     while respuesta != "a" and respuesta != "b" and respuesta != "c":
         respuesta = input("Error, Ingrese una respuesta valida (a - b - c): ").lower()
 
@@ -54,7 +56,7 @@ def validar_respuesta(respuesta):
 
 #ahora empieza la funcionalidad
 
-def mover(diccionario, respuesta, posicion, tablero):
+def mover(diccionario:dict, respuesta:str, posicion:int, tablero:list)->int:
 
     respuesta_correcta = diccionario["respuesta_correcta"]
 
@@ -77,7 +79,7 @@ def mover(diccionario, respuesta, posicion, tablero):
 
 
 
-def calcular_direccion_base(respuesta_validada,respuesta_correcta):
+def calcular_direccion_base(respuesta_validada:str,respuesta_correcta:str)->int:
     calculo = 0
     if respuesta_validada == respuesta_correcta:
         calculo = 1
@@ -89,7 +91,7 @@ def calcular_direccion_base(respuesta_validada,respuesta_correcta):
     return calculo
 
 
-def calcular_direccion_tablero(posicion,tablero, operacion):
+def calcular_direccion_tablero(posicion:int,tablero:list, operacion:int)->int:
     salto_adicional = tablero[posicion]
     posicion += salto_adicional * operacion
     return posicion
@@ -97,7 +99,7 @@ def calcular_direccion_tablero(posicion,tablero, operacion):
 
 
 
-def verificar_estado_juego(posicion, ultima_casilla):
+def verificar_estado_juego(posicion:int, ultima_casilla:int)->str:
     estado = "continua"
 
     if posicion >= ultima_casilla:
