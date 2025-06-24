@@ -11,9 +11,12 @@ posicion_perdedor = 0 """
 
 def main(preguntas:list, posicion:int, tablero:list):
 
-    # Pide nombre y señal para empezar, tambien hace la copia de la lista de preguntas
+    # Pide nombre y señal para empezar, tambien hace la copia de la lista de preguntas y la mezcla
     nombre_jugador = pedir_nombre()
-    preguntas_copia = mezclar_nueva_lista(preguntas)
+
+    preguntas_copia = copiar_lista(preguntas)
+    preguntas_copia = mezclar(preguntas_copia)
+
     señal = ingresar_opcion("Quiere iniciar el juego? (s/n): ")
 
     #Inicia el bucle segun la señal del jugador
@@ -21,7 +24,7 @@ def main(preguntas:list, posicion:int, tablero:list):
 
         #Cuando la lista de preguntas termina, finaliza el juego
         if not preguntas_copia:
-            print("Se acabaron las preguntas.")
+            print("\nSe acabaron las preguntas.")
             print(f"Tu puntaje final es: {posicion}")
             break
         

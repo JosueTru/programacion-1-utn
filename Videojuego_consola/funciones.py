@@ -26,12 +26,17 @@ def ingresar_opcion(texto:str)->str:
 
 
 # Copia la lista de preguntas para luego usarla y modificarla
-def mezclar_nueva_lista(preguntas:list)->list:
+def copiar_lista(preguntas:list)->list:
     preguntas_copia = preguntas.copy()
 
-    #Esto mezcla las preguntas y retorna la copia mezclada
+    """ random.shuffle(preguntas_copia) """
+
+    return preguntas_copia
+
+def mezclar(preguntas_copia:list):
     random.shuffle(preguntas_copia)
     return preguntas_copia
+
 
 
 # Saca el ultimo elemento de la lista de diccionarios y la guarda en una variable para retornar
@@ -67,13 +72,11 @@ def mover(diccionario:dict, respuesta:str, posicion:int, tablero:list)->int:
     #Calcula la direccion y saltos
     operacion = calcular_direccion_base(respuesta, respuesta_correcta)
     posicion += operacion
-    
+
     posicion = calcular_direccion_tablero(posicion, tablero, operacion)
 
 
     print(f"Tu posicion actual es {posicion} !")
-
-    
 
     return posicion
 
@@ -82,9 +85,9 @@ def mover(diccionario:dict, respuesta:str, posicion:int, tablero:list)->int:
 
 
 # Calccula la direccion a la que se mueve el jugador
-def calcular_direccion_base(respuesta_validada:str,respuesta_correcta:str)->int:
+def calcular_direccion_base(respuesta:str,respuesta_correcta:str)->int:
     calculo = 0
-    if respuesta_validada == respuesta_correcta:
+    if respuesta == respuesta_correcta:
         calculo = 1
         print("-CORRECTO-")
     else:
@@ -101,7 +104,7 @@ def calcular_direccion_tablero(posicion:int,tablero:list, operacion:int)->int:
     return posicion
 
 
-
+###########
 
 def verificar_estado_juego(posicion:int, ultima_casilla:int)->str:
     estado = "continua"
@@ -126,8 +129,8 @@ def verificar_estado_juego(posicion:int, ultima_casilla:int)->str:
 # Guarda los datos en un archivo puntaje.csv
 def guardar_datos(nombre_jugador: str, posicion: int):
     with open("puntaje.csv", "a") as puntajes:
-        puntajes.write(f"{nombre_jugador} - {posicion} puntos.\n")
-###
+        puntajes.write(f"{nombre_jugador} || {posicion} puntos.\n")
+###########
 
 
 
